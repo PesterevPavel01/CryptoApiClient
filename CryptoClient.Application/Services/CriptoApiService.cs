@@ -1,16 +1,13 @@
 ﻿using CryptoClient.App.Dto;
+using CryptoClient.App.Interfaces;
 using CryptoClient.App.Interfaces.Services;
 using CryptoClient.App.Models;
 using CryptoClient.App.Models.Result;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CryptoExchange.Net.CommonObjects;
 
 namespace CryptoClient.App.Services
 {
-    public class CriptoApiService:ICryptoApiService
+    public class CriptoApiService : ICryptoApiService
     {
         private readonly CommonService<BinanceConnector> binanceService;
         private readonly CommonService<BybitConnector> bybitService;
@@ -18,14 +15,18 @@ namespace CryptoClient.App.Services
         private readonly CommonService<BitgetConnector> bitgetService;
 
 
-        public CriptoApiService() {
+        public CriptoApiService()
+        {
+
             bybitService = new();
             kucoinService = new();
             bitgetService = new();
             binanceService = new();
+
         }
 
-        public async Task<List<SymbolItem>> GetBybitSymbol(string symbol) {
+        public async Task<List<SymbolItem>> GetBybitSymbol(string symbol)
+        {
             return await GetSymbol(symbol, bybitService);
         }
 
@@ -44,6 +45,36 @@ namespace CryptoClient.App.Services
             return await GetSymbol(symbol, bitgetService);
         }
 
+        public async Task<SingleResult<SymbolItem>> BinanceSubscribeTradeStream(string symbol)
+        {
+            return await SubscribeTradeStream(binanceService, symbol);
+        }
+
+        public async Task<SingleResult<SymbolItem>> BybitSubscribeTradeStream(string symbol)
+        {
+            return await SubscribeTradeStream(bybitService, symbol);
+        }
+
+        public List<SymbolItem> BinanceGetStreamResult()
+        {
+            return GetStreamResult(binanceService);
+        }
+
+        public List<SymbolItem> BybitGetStreamResult()
+        {
+            return GetStreamResult(bybitService);
+        }
+
+        public async Task<SingleResult<SymbolItem>> BinanceStreamChangeSymbol(string symbol)
+        {
+            return await binanceService.TradeStreamChangeSymbol(symbol);
+        }
+
+        public async Task<SingleResult<SymbolItem>> BybitStreamChangeSymbol(string symbol)
+        {
+            return await bybitService.TradeStreamChangeSymbol(symbol);
+        }
+
         private async Task<List<SymbolItem>> GetSymbol(string symbol, ICommonService<SymbolItem> service)
         {
 
@@ -55,12 +86,13 @@ namespace CryptoClient.App.Services
             }
             else
             {
-                return(new());
+                return (new());
             }
         }
-
-        public async Task<String[]> GetSymbols()
+        
+        public async Task<string[]> GetSymbols()
         {
+
             CollectionResult<SymbolItem> binanceItems = await binanceService.GetAllSymbolsAsync();
 
             List<SymbolItem> resultList = (List<SymbolItem>)binanceItems.Data;
@@ -77,6 +109,25 @@ namespace CryptoClient.App.Services
             return resultList.GroupBy(r => r.symbol).Select(r => r.First().symbol).ToArray();
         }
 
+        private async Task<SingleResult<SymbolItem>> SubscribeTradeStream(ICommonService<SymbolItem> service, string symbol)
+        {
+            SingleResult<SymbolItem> result = await service.SubscribeTradeStream(symbol);
 
+            if (result.IsSuccess)
+            {
+                result.Data = service.GetStreamResult();
+            }
+            return result;
+        }
+
+        private List<SymbolItem> GetStreamResult(ICommonService<SymbolItem> service)
+        {
+            var streamResult = service.GetStreamResult();
+
+            if (String.IsNullOrEmpty(streamResult.symbol))
+                return [];
+            else
+                return [service.GetStreamResult()];
+        }
     }
 }

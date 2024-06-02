@@ -61,6 +61,15 @@ namespace CryptoClient.App {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Filed to subscribe.
+        /// </summary>
+        internal static string FiledToSubscribe {
+            get {
+                return ResourceManager.GetString("FiledToSubscribe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Item not found.
         /// </summary>
         internal static string ItemNotFound {

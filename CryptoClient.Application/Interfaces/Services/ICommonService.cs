@@ -1,9 +1,5 @@
-﻿using CryptoClient.App.Models.Result;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CryptoClient.App.Dto;
+using CryptoClient.App.Models.Result;
 
 namespace CryptoClient.App.Interfaces.Services
 {
@@ -11,6 +7,9 @@ namespace CryptoClient.App.Interfaces.Services
     {
         Task<CollectionResult<T>> GetAllSymbolsAsync();
         Task<SingleResult<T>> GetBySymbolAsync(string symbol);
-
+        Task<SingleResult<SymbolItem>> TradeStreamChangeSymbol(string symbol);
+        Task<SingleResult<SymbolItem>> SubscribeTradeStream(string symbol);
+        Task UnsubscribeCurrentTradeStream();
+        SymbolItem GetStreamResult();
     }
 }

@@ -38,6 +38,7 @@ namespace CryptoClient.App.Services
 
         public async Task<SingleResult<SymbolItem>> GetBySymbolAsync(string symbol)
         {
+
             CollectionResult<SymbolItem> items = await GetAllSymbolsAsync();
 
             if (!items.IsSuccess)
@@ -63,5 +64,33 @@ namespace CryptoClient.App.Services
                 Data = item
             };
         }
+
+        public async Task<SingleResult<SymbolItem>> GetPriceAsync(string symbol)
+        {
+            await _connector.GetPriceBySymbol(symbol);
+
+            return null;
+        }
+
+        public async Task<SingleResult<SymbolItem>> SubscribeTradeStream(string symbol)
+        {
+            return await _connector.SubscribeTradeStream(symbol);
+        }
+
+        public async Task UnsubscribeCurrentTradeStream()
+        {
+            await _connector.UnsubscribeCurrentTradeStream();
+        }
+
+        public SymbolItem GetStreamResult() {
+            return _connector.SymbolItemFromStream;
+        }
+
+        public async Task<SingleResult<SymbolItem>> TradeStreamChangeSymbol(string symbol)
+        {
+            await UnsubscribeCurrentTradeStream();
+            return await SubscribeTradeStream(symbol);
+        }
+
     }
 }

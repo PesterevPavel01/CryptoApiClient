@@ -1,13 +1,5 @@
-﻿using CryptoClient.App.Dto;
-using CryptoClient.App.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CryptoClient.App.Models.Result
-{     
+﻿namespace CryptoClient.App.Models.Result
+{
     public class SingleResult
     {
         public bool IsSuccess => ErrorMessage == null;
@@ -28,10 +20,5 @@ namespace CryptoClient.App.Models.Result
         public T Data { get; set; }
 
         public SingleResult() { }
-
-        public static implicit operator SingleResult<T>(SingleResult<IConnector<SymbolItem>> v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -8,6 +8,9 @@ namespace CryptoClient.App.Dto
 {
     public class SymbolItem
     {
+        public SymbolItem()
+        {
+        }
         public SymbolItem(string symbol, decimal price)
         {
             this.symbol = symbol;

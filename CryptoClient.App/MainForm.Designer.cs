@@ -32,20 +32,22 @@ namespace CryptoClient.App
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             BinanceTable = new DataGridView();
+            symbol = new DataGridViewTextBoxColumn();
+            price = new DataGridViewTextBoxColumn();
             splitContainer1 = new SplitContainer();
             toolStrip1 = new ToolStrip();
             SymbolComboBox = new ToolStripComboBox();
@@ -54,24 +56,22 @@ namespace CryptoClient.App
             BinanceLabel = new ToolStripLabel();
             splitContainer3 = new SplitContainer();
             BybitTable = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             BybitToolStrip = new ToolStrip();
             toolStripLabel1 = new ToolStripLabel();
             splitContainer4 = new SplitContainer();
             KucoinTable = new DataGridView();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             KucoinToolStrip = new ToolStrip();
             toolStripLabel2 = new ToolStripLabel();
             BitgetTable = new DataGridView();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             BitgetToolStrip = new ToolStrip();
             toolStripLabel3 = new ToolStripLabel();
             splitContainer5 = new SplitContainer();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            symbol = new DataGridViewTextBoxColumn();
-            price = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)BinanceTable).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -147,6 +147,23 @@ namespace CryptoClient.App
             BinanceTable.SelectionMode = DataGridViewSelectionMode.CellSelect;
             BinanceTable.Size = new Size(208, 352);
             BinanceTable.TabIndex = 0;
+            // 
+            // symbol
+            // 
+            symbol.DataPropertyName = "symbol";
+            symbol.HeaderText = "Symbol";
+            symbol.Name = "symbol";
+            symbol.ReadOnly = true;
+            // 
+            // price
+            // 
+            price.DataPropertyName = "price";
+            dataGridViewCellStyle2.Format = "N4";
+            dataGridViewCellStyle2.NullValue = null;
+            price.DefaultCellStyle = dataGridViewCellStyle2;
+            price.HeaderText = "Price";
+            price.Name = "price";
+            price.ReadOnly = true;
             // 
             // splitContainer1
             // 
@@ -292,6 +309,23 @@ namespace CryptoClient.App
             BybitTable.Size = new Size(204, 352);
             BybitTable.TabIndex = 1;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.DataPropertyName = "symbol";
+            dataGridViewTextBoxColumn1.HeaderText = "Symbol";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "price";
+            dataGridViewCellStyle6.Format = "N4";
+            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewTextBoxColumn2.HeaderText = "Price";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
             // BybitToolStrip
             // 
             BybitToolStrip.AutoSize = false;
@@ -377,6 +411,23 @@ namespace CryptoClient.App
             KucoinTable.Size = new Size(204, 352);
             KucoinTable.TabIndex = 1;
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "symbol";
+            dataGridViewTextBoxColumn3.HeaderText = "Symbol";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "price";
+            dataGridViewCellStyle10.Format = "N4";
+            dataGridViewCellStyle10.NullValue = null;
+            dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewTextBoxColumn4.HeaderText = "Price";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
             // KucoinToolStrip
             // 
             KucoinToolStrip.AutoSize = false;
@@ -440,6 +491,23 @@ namespace CryptoClient.App
             BitgetTable.Size = new Size(207, 352);
             BitgetTable.TabIndex = 1;
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "symbol";
+            dataGridViewTextBoxColumn5.HeaderText = "Symbol";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.DataPropertyName = "price";
+            dataGridViewCellStyle14.Format = "N4";
+            dataGridViewCellStyle14.NullValue = null;
+            dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewTextBoxColumn6.HeaderText = "Price";
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
             // BitgetToolStrip
             // 
             BitgetToolStrip.AutoSize = false;
@@ -474,74 +542,6 @@ namespace CryptoClient.App
             splitContainer5.Size = new Size(1531, 440);
             splitContainer5.SplitterDistance = 837;
             splitContainer5.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "symbol";
-            dataGridViewTextBoxColumn1.HeaderText = "Symbol";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "price";
-            dataGridViewCellStyle6.Format = "N4";
-            dataGridViewCellStyle6.NullValue = null;
-            dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle6;
-            dataGridViewTextBoxColumn2.HeaderText = "Price";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // symbol
-            // 
-            symbol.DataPropertyName = "symbol";
-            symbol.HeaderText = "Symbol";
-            symbol.Name = "symbol";
-            symbol.ReadOnly = true;
-            // 
-            // price
-            // 
-            price.DataPropertyName = "price";
-            dataGridViewCellStyle2.Format = "N4";
-            dataGridViewCellStyle2.NullValue = null;
-            price.DefaultCellStyle = dataGridViewCellStyle2;
-            price.HeaderText = "Price";
-            price.Name = "price";
-            price.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "symbol";
-            dataGridViewTextBoxColumn3.HeaderText = "Symbol";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "price";
-            dataGridViewCellStyle10.Format = "N4";
-            dataGridViewCellStyle10.NullValue = null;
-            dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle10;
-            dataGridViewTextBoxColumn4.HeaderText = "Price";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "symbol";
-            dataGridViewTextBoxColumn5.HeaderText = "Symbol";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "price";
-            dataGridViewCellStyle14.Format = "N4";
-            dataGridViewCellStyle14.NullValue = null;
-            dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle14;
-            dataGridViewTextBoxColumn6.HeaderText = "Price";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // MainForm
             // 

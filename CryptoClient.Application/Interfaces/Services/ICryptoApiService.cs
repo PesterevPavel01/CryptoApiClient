@@ -1,9 +1,5 @@
 ﻿using CryptoClient.App.Dto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CryptoClient.App.Models.Result;
 
 namespace CryptoClient.App.Interfaces.Services
 {
@@ -13,6 +9,14 @@ namespace CryptoClient.App.Interfaces.Services
         Task<List<SymbolItem>> GetBinanceSymbol(string symbol);
         Task<List<SymbolItem>> GetKucoinSymbol(string symbol);
         Task<List<SymbolItem>> GetBitgetSymbol(string symbol);
-        Task<String[]> GetSymbols();
+        Task<string[]> GetSymbols();
+
+        Task<SingleResult<SymbolItem>> BinanceSubscribeTradeStream(string symbol);
+        List<SymbolItem> BinanceGetStreamResult();
+        Task<SingleResult<SymbolItem>> BinanceStreamChangeSymbol(string symbol);
+
+        List<SymbolItem> BybitGetStreamResult();
+        Task<SingleResult<SymbolItem>> BybitSubscribeTradeStream(string symbol);
+        Task<SingleResult<SymbolItem>> BybitStreamChangeSymbol(string symbol);
     }
 }
