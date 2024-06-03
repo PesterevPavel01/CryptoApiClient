@@ -70,25 +70,24 @@ namespace CryptoClient.App
 
             CancellationToken cancellationToken= cancellationTokenSource.Token;
 
-            Task task=
-                Task.Run(async () =>
+            Task.Run(async () =>
+            {
+
+                while (true)
                 {
-
-                    while (true)
+                    if (cancellationTokenSource.IsCancellationRequested)
                     {
-                        if (cancellationTokenSource.IsCancellationRequested)
-                        {
-                            cancellationTokenSource.Dispose();
-                            break;
-                        }
-
-                        UpdateData();
-                        await Task.Delay(5000);
+                        cancellationTokenSource.Dispose();
+                        break;
                     }
 
-                 }, cancellationToken);
+                    UpdateData();
+                    await Task.Delay(5000);
+                }
 
-            exchangeTask.Add(new ExchangeTask {CancellationToken=cancellationToken,CancellationTokenSource=cancellationTokenSource,Task=task });
+            }, cancellationToken);
+
+            exchangeTask.Add(new ExchangeTask {CancellationToken=cancellationToken,CancellationTokenSource=cancellationTokenSource });
         }
 
         private async void UpdateData()
