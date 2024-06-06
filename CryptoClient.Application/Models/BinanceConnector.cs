@@ -3,7 +3,6 @@ using CryptoClient.App.Dto;
 using CryptoClient.App.Enum;
 using CryptoClient.App.Interfaces;
 using CryptoClient.App.Models.Result;
-using System.Reflection;
 
 namespace CryptoClient.App.Models
 {
